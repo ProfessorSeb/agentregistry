@@ -3,7 +3,7 @@
 </p>
 
 <h1 align="center" style="font-size: 3em;">Build. Deploy. Discover.</h1>
-<h3 align="center">One registry for MCP servers, agents, and skills.</h3>
+<h3 align="center">One registry for MCP servers, agents, skills and prompts.</h3>
 
 <br/>
 
@@ -40,7 +40,7 @@ agentregistry puts all of that into a single registry with a CLI and a web UI. Y
 <table>
 <tr>
 <td width="50%" valign="top">
-<h2>For Organizations</h2>
+<h3>For Organizations</h3>
 <p><strong>Curate &amp; Deploy</strong></p>
 <p>Package, collect, and enrich AI artifacts from any source in a single centralized registry.</p>
 <p>
@@ -58,7 +58,7 @@ agentregistry puts all of that into a single registry with a CLI and a web UI. Y
 
 </td>
 <td width="50%" valign="top">
-<h2>For Developers</h2>
+<h3>For Developers</h3>
 <p><strong>Build &amp; Publish</strong></p>
 <p>Build, test, publish, and deploy AI artifacts with minimal dependencies.</p>
 <p>
