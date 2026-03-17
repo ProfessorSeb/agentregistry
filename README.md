@@ -57,13 +57,47 @@ Build, test, publish, and deploy AI artifacts with minimal dependencies.
 
 ## Why agentregistry?
 
-- **Centralized control** — Package and collect AI artifacts from any source into a single registry.
-- **Security and governance** — Curate and approve agents, servers, and skills before company-wide deployment.
-- **Enriched metadata** — Add context to help assess trustworthiness and security.
-
-<p align="center">
-  <img src="img/dev-scenario.svg" alt="Why agentregistry" width="800"/>
+<table>
+<tr>
+<td width="50%" valign="top">
+<h2>For Organizations</h2>
+<p><strong>Curate &amp; Deploy</strong></p>
+<p>Package, collect, and enrich AI artifacts from any source in a single centralized registry.</p>
+<p>
+  <a href="img/operator-scenario.svg">
+    <img src="img/operator-scenario.svg" alt="Organization workflow diagram" width="100%"/>
+    <br/>
+    <sub>Organization workflow diagram Click to expand ↗</sub>
+  </a>
 </p>
+<ul>
+  <li><strong>Centralized Control</strong> - Package and collect AI artifacts from any source into a single registry</li>
+  <li><strong>Security &amp; Governance</strong> - Curate and approve agents, servers, and skills before company-wide deployment</li>
+  <li><strong>Enriched Metadata</strong> - Add context to help assess trustworthiness and security</li>
+</ul>
+
+</td>
+<td width="50%" valign="top">
+<h2>For Developers</h2>
+<p><strong>Build &amp; Publish</strong></p>
+<p>Build, test, publish, and deploy AI artifacts with minimal dependencies.</p>
+<p>
+  <a href="img/dev-scenario.svg">
+    <img src="img/dev-scenario.svg" alt="Developer workflow diagram" width="100%"/>
+    <br/>
+    <sub>Developer workflow diagram Click to expand ↗</sub>
+  </a>
+</p>
+<ul>
+  <li><strong>Local Development</strong> - Create and test agents, skills, and MCP servers locally</li>
+  <li><strong>Easy Publishing</strong> - Publish your artifacts to a registry with a single command</li>
+  <li><strong>Pull &amp; Run Anywhere</strong> - Pull artifacts from the registry and run them in any environment instantly</li>
+  <li><strong>Discover &amp; Consume</strong> - Find new artifacts to add to registry or optimize existing artifacts</li>
+</ul>
+
+</td>
+</tr>
+</table>
 
 ---
 
