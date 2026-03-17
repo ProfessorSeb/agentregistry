@@ -193,7 +193,8 @@ agentregistry automatically enriches every artifact on ingest. Operators get:
 
 - **Audit visibility** — Full view of what's registered, what's deployed, and what's in use across your organization.
 
-### Kubernetes-native deployment
+<a id="quick-start"></a>
+## Quick Start
 
 **Prerequisites:** Docker Desktop with Docker Compose v2+
 
