@@ -35,7 +35,12 @@ agentregistry puts all of that into a single registry with a CLI and a web UI. Y
 
 ---
 
-## Why agentregistry?
+## Why Agent Registry?
+
+- **One trusted source for AI building blocks** — a curated catalog instead of scattered repos, scripts, and one-off MCP setup
+- **Faster developer onboarding** — discover approved artifacts quickly with less manual configuration
+- **Consistent path from laptop to cluster** — same discovery and delivery workflow across local dev and Kubernetes
+- **Governance without slowing teams down** — centralize curation and publishing without forcing each team to rebuild the process
 
 <table>
 <tr>
@@ -82,6 +87,15 @@ agentregistry puts all of that into a single registry with a CLI and a web UI. Y
 ---
 
 ## Core Capabilities
+
+### Build
+
+Create, scaffold, and publish the building blocks of your agentic infrastructure.
+
+- **MCP servers** — Register servers from npm (`npx`), PyPI (`uvx`), OCI/Docker images, or remote HTTP/SSE endpoints. Each entry stores version history, tool listings, environment variables, package references, and automated quality scores.
+- **Skills** — Build structured knowledge packages that extend what an agent knows. A skill is a `SKILL.md` bundled with code examples, docs, PDFs, and reference URLs. Scaffold with `arctl skill init`, publish with `arctl skill publish` to Docker Hub or any OCI registry.
+- **Agents** — Define agents that bundle an identity with dependencies: which MCP servers it needs, which skills it uses, and how it should be configured. Use ADK scaffolding to build, then package everything into a versioned blueprint for one-step deployment.
+- **Prompts** — Create reusable instruction templates that define how an agent should behave in specific contexts. Version and store them alongside agents, skills, and servers so they're discoverable and shareable across your team.
 
 ### Registry
 
