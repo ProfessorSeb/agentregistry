@@ -151,6 +151,34 @@ Make approved artifacts easier to consume from the tools developers already use.
 3. Teams pull and deploy what they need in local environments or Kubernetes
 4. AI clients and shared gateway infrastructure connect to approved artifacts through a consistent workflow
 
+## Secure Access with Agent Gateway
+
+<p align="center">
+  <img src="img/arch-diagram.png" alt="Agent Gateway architecture diagram" width="800"/>
+</p>
+
+agentregistry pairs with [Agent Gateway](https://github.com/agentgateway/agentgateway) to give you a single, secure entry point to all your deployed MCP servers and agents.
+
+Instead of exposing every MCP server individually, Agent Gateway acts as an AI-native reverse proxy that sits in front of your entire agentic infrastructure:
+
+- **Single endpoint** — AI clients (Claude Desktop, Cursor, VS Code) connect to one URL. The gateway routes each tool call to the correct backend MCP server.
+- **Authentication & authorization** — Enforce identity and access policies before requests reach your MCP servers. Control who can call which tools.
+- **Centralized observability** — Log and monitor all agent-to-tool traffic in one place instead of instrumenting each server separately.
+- **Dynamic discovery** — Deploy a new MCP server through agentregistry and every connected client picks it up automatically — no reconfiguration needed.
+- **Transport flexibility** — Proxy across stdio, SSE, and streamable HTTP transports seamlessly.
+
+```
+┌─────────────┐     ┌─────────────────┐     ┌──────────────┐
+│  AI Client  │────▶│  Agent Gateway  │────▶│  MCP Server  │
+│  (Cursor,   │     │  (auth, route,  │     │  MCP Server  │
+│   Claude)   │     │   observe)      │     │  MCP Server  │
+└─────────────┘     └─────────────────┘     └──────────────┘
+```
+
+When you run `arctl deploy`, agentregistry automatically configures the gateway routing so your MCP servers are reachable through the secured proxy. Run `arctl configure cursor` to point your IDE at the gateway endpoint.
+
+---
+
 ## Related Projects
 
 | Project | Role |
