@@ -52,13 +52,6 @@ agentregistry puts all of that into a single registry with a CLI and a web UI. Y
 <h3>For Organizations</h3>
 <p><strong>Curate &amp; Deploy</strong></p>
 <p>Package, collect, and enrich AI artifacts from any source in a single centralized registry.</p>
-<p>
-  <a href="img/operator-scenario.svg">
-    <img src="img/operator-scenario.svg" alt="Organization workflow diagram" width="100%"/>
-    <br/>
-    <sub>Organization workflow diagram Click to expand ↗</sub>
-  </a>
-</p>
 <ul>
   <li><strong>Centralized Control</strong> - Package and collect AI artifacts from any source into a single registry</li>
   <li><strong>Security &amp; Governance</strong> - Curate and approve agents, servers, and skills before company-wide deployment</li>
@@ -70,13 +63,6 @@ agentregistry puts all of that into a single registry with a CLI and a web UI. Y
 <h3>For Developers</h3>
 <p><strong>Build &amp; Publish</strong></p>
 <p>Build, test, publish, and deploy AI artifacts with minimal dependencies.</p>
-<p>
-  <a href="img/dev-scenario.svg">
-    <img src="img/dev-scenario.svg" alt="Developer workflow diagram" width="100%"/>
-    <br/>
-    <sub>Developer workflow diagram Click to expand ↗</sub>
-  </a>
-</p>
 <ul>
   <li><strong>Local Development</strong> - Create and test agents, skills, and MCP servers locally</li>
   <li><strong>Easy Publishing</strong> - Publish your artifacts to a registry with a single command</li>
