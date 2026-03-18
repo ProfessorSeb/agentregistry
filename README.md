@@ -167,14 +167,6 @@ Instead of exposing every MCP server individually, agentgateway acts as an AI-na
 - **Dynamic discovery** — Deploy a new MCP server through agentregistry and every connected client picks it up automatically — no reconfiguration needed.
 - **Transport flexibility** — Proxy across stdio, SSE, and streamable HTTP transports seamlessly.
 
-```
-┌─────────────┐     ┌──────────────────┐     ┌──────────────┐
-│  AI Client  │────▶│  agentgateway    │────▶│  MCP Server  │
-│  (Cursor,   │     │  (auth, route,   │     │  MCP Server  │
-│   Claude)   │     │   observe)       │     │  MCP Server  │
-└─────────────┘     └──────────────────┘     └──────────────┘
-```
-
 When you run `arctl deploy`, agentregistry automatically configures the gateway routing so your MCP servers are reachable through the secured proxy. Run `arctl configure cursor` to point your IDE at the gateway endpoint.
 
 ---
