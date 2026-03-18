@@ -161,6 +161,7 @@ Instead of exposing every MCP server individually, agentgateway acts as an AI-na
 - **Authentication & authorization** — Enforce identity and access policies before requests reach your MCP servers. Control who can call which tools. Supports JWT validation and on-behalf-of auth flows.
 - **Centralized observability** — Log and monitor all agent-to-tool traffic in one place instead of instrumenting each server separately. Supports OTEL endpoints for traces, metrics, and logs.
 - **Dynamic discovery** — Deploy a new MCP server through agentregistry and every connected client picks it up automatically — no reconfiguration needed.
+- **LLM gateway** — agentgateway also acts as a unified gateway for LLM providers, giving you a single endpoint to route, manage, and secure access to multiple language models.
 - **Transport flexibility** — Proxy across stdio, SSE, and streamable HTTP transports seamlessly.
 
 <p align="center">
