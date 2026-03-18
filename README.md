@@ -109,6 +109,14 @@ Create, scaffold, and publish the building blocks of your agentic infrastructure
 - **Agents** — Define agents that bundle an identity with dependencies: which MCP servers it needs, which skills it uses, and how it should be configured. Use ADK scaffolding to build, then package everything into a versioned blueprint for one-step deployment.
 - **Prompts** — Create reusable instruction templates that define how an agent should behave in specific contexts. Version and store them alongside agents, skills, and servers so they're discoverable and shareable across your team.
 
+### Web UI
+
+A browser-based admin interface at `localhost:12121`. Browse the artifact catalog, add MCP servers, skills, and agents, review enrichment scores and metadata, manage deployments, and configure the registry — all without touching the CLI.
+
+<p align="center">
+  <img src="img/arwui.gif" alt="agentregistry Web UI" width="800"/>
+</p>
+
 ### Registry
 
 Curate a shared catalog of MCP servers, agents, skills, and prompts your teams can trust and reuse.
