@@ -153,10 +153,6 @@ Make approved artifacts easier to consume from the tools developers already use.
 
 ## Secure Access with agentgateway
 
-<p align="center">
-  <img src="img/arch-diagram.png" alt="agentgateway architecture diagram" width="800"/>
-</p>
-
 agentregistry pairs with [agentgateway](https://github.com/agentgateway/agentgateway) to give you a single, secure entry point to all your deployed MCP servers and agents.
 
 Instead of exposing every MCP server individually, agentgateway acts as an AI-native reverse proxy that sits in front of your entire agentic infrastructure:
@@ -166,6 +162,10 @@ Instead of exposing every MCP server individually, agentgateway acts as an AI-na
 - **Centralized observability** — Log and monitor all agent-to-tool traffic in one place instead of instrumenting each server separately.
 - **Dynamic discovery** — Deploy a new MCP server through agentregistry and every connected client picks it up automatically — no reconfiguration needed.
 - **Transport flexibility** — Proxy across stdio, SSE, and streamable HTTP transports seamlessly.
+
+<p align="center">
+  <img src="img/arch-diagram.png" alt="agentgateway architecture diagram" width="800"/>
+</p>
 
 When you run `arctl deploy`, agentregistry automatically configures the gateway routing so your MCP servers are reachable through the secured proxy. Run `arctl configure cursor` to point your IDE at the gateway endpoint.
 
