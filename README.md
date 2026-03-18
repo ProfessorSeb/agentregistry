@@ -35,7 +35,7 @@ agentregistry puts all of that into a single registry with a CLI and a web UI. Y
 
 ---
 
-## Why Agent Registry?
+## Why agentregistry?
 
 - **One trusted source for AI building blocks** — a curated catalog instead of scattered repos, scripts, and one-off MCP setup
 - **Faster developer onboarding** — discover approved artifacts quickly with less manual configuration
