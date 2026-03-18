@@ -97,101 +97,19 @@ A browser-based admin interface at `localhost:12121`. Add MCP servers, skills, a
 
 ## Core Capabilities
 
-### Artifact registry
+A centralized catalog for AI artifacts, backed by PostgreSQL with pgvector for semantic search.
 
-A centralized catalog for three types of AI artifacts, backed by PostgreSQL with pgvector for semantic search.
+- **MCP servers** — The tools that AI agents and IDE assistants call at runtime. agentregistry supports every packaging model: npm packages run via `npx` on `node:24-alpine`, PyPI packages run via `uvx` on Astral's `uv` runtime, OCI/Docker images pulled from any container registry, and remote HTTP/SSE endpoints accessed directly with optional auth headers. Each server entry stores rich metadata including version history, tool listings, environment variable requirements, package references, and automated quality scores.
 
-<table>
-<tr>
-<td width="52%" valign="top">
-<p><strong>MCP servers</strong> — The tools that AI agents and IDE assistants call at runtime. agentregistry supports every packaging model: npm packages run via <code>npx</code> on <code>node:24-alpine</code>, PyPI packages run via <code>uvx</code> on Astral's <code>uv</code> runtime, OCI/Docker images pulled from any container registry, and remote HTTP/SSE endpoints accessed directly with optional auth headers. Each server entry stores rich metadata including version history, tool listings, environment variable requirements, package references, and automated quality scores.</p>
-</td>
-<td width="48%" align="center" valign="top">
-  <a href="img/createmcp.gif">
-    <img src="img/createmcp.gif" alt="Creating an MCP server in agentregistry" width="480"/>
-  </a>
-  <br/>
-  <em>Create and register MCP servers from npm, PyPI, Docker, or remote endpoints</em>
-  <br/>
-  <sub><a href="img/createmcp.gif">Click to expand ↗</a></sub>
-</td>
-</tr>
-</table>
+- **Skills** — Structured knowledge packages that extend what an agent knows beyond its base training. A skill is a SKILL.md instruction file bundled with optional code examples, documentation, PDFs, and reference URLs. Skills are published as container images to Docker Hub or any OCI-compatible registry and can be pulled locally by any compatible AI assistant. The `arctl skill init` command scaffolds the directory structure; `arctl skill publish` builds and pushes the image.
 
-<table>
-<tr>
-<td width="52%" valign="top">
-<p><strong>Skills</strong> — Structured knowledge packages that extend what an agent knows beyond its base training. A skill is a SKILL.md instruction file bundled with optional code examples, documentation, PDFs, and reference URLs. Skills are published as container images to Docker Hub or any OCI-compatible registry and can be pulled locally by any compatible AI assistant. The <code>arctl skill init</code> command scaffolds the directory structure; <code>arctl skill publish</code> builds and pushes the image.</p>
-</td>
-<td width="48%" align="center" valign="top">
-  <a href="img/createskill.gif">
-    <img src="img/createskill.gif" alt="Creating a skill in agentregistry" width="480"/>
-  </a>
-  <br/>
-  <em>Scaffold, build, and publish skills as portable container images</em>
-  <br/>
-  <sub><a href="img/createskill.gif">Click to expand ↗</a></sub>
-</td>
-</tr>
-</table>
+- **Agents** — Definitions that bundle an agent's identity with its dependencies: which MCP servers it needs, which skills it uses, and how it should be configured. agentregistry uses the ADK (Agent Development Kit) scaffolding pattern. Blueprints package an agent and all its dependencies into a single versioned artifact for one-step deployment.
 
-<table>
-<tr>
-<td width="52%" valign="top">
-<p><strong>Agents</strong> — Definitions that bundle an agent's identity with its dependencies: which MCP servers it needs, which skills it uses, and how it should be configured. agentregistry uses the ADK (Agent Development Kit) scaffolding pattern. Blueprints package an agent and all its dependencies into a single versioned artifact for one-step deployment.</p>
-</td>
-<td width="48%" align="center" valign="top">
-  <a href="img/createagents.gif">
-    <img src="img/createagents.gif" alt="Creating an agent in agentregistry" width="480"/>
-  </a>
-  <br/>
-  <em>Define agents with bundled MCP servers, skills, and configuration</em>
-  <br/>
-  <sub><a href="img/createagents.gif">Click to expand ↗</a></sub>
-</td>
-</tr>
-</table>
-
-**Prompts** — Reusable instruction templates that define how an agent should behave in specific contexts. Prompts are versioned and stored in the registry alongside agents, skills, and servers, making them discoverable and shareable across your team.
+- **Prompts** — Reusable instruction templates that define how an agent should behave in specific contexts. Prompts are versioned and stored in the registry alongside agents, skills, and servers, making them discoverable and shareable across your team.
 
 ### Build and push
 
-<table>
-<tr>
-<td width="52%" valign="top">
-<p>Scaffold agents using ADK, version them, and push to the registry. Blueprints bundle an agent definition with its MCP server dependencies and skills into a single deployable unit. The registry stores the metadata and pointers — actual container images live in Docker Hub, GHCR, or any OCI registry you use. This means you own your artifacts; agentregistry indexes and governs them.</p>
-</td>
-<td width="48%" align="center" valign="top">
-  <a href="img/addtools.gif">
-    <img src="img/addtools.gif" alt="Adding tools to an agent in agentregistry" width="480"/>
-  </a>
-  <br/>
-  <em>Add MCP servers and skills to agents, then push to the registry</em>
-  <br/>
-  <sub><a href="img/addtools.gif">Click to expand ↗</a></sub>
-</td>
-</tr>
-</table>
-
-### Deploy anywhere
-
-Deploy the same artifact to Docker locally or to any Kubernetes cluster from a single UI or CLI — no code changes required. When you deploy an MCP server, agentregistry runs a three-stage translation pipeline:
-
-1. **Registry translator** — Reads the server definition, determines local vs. remote deployment, and selects the base Docker image based on package type (npm, PyPI, OCI).
-2. **Compose translator** — Generates a Docker Compose configuration with the correct image, command, ports, environment variables, and Agent Gateway routing rules.
-3. **Reconciler** — Writes `docker-compose.yaml` and `agent-gateway.yaml` to `~/.agentregistry/runtime/` and runs `docker compose up` to match desired state. Fully idempotent — run it as many times as you want.
-
-The Agent Gateway acts as a reverse proxy that provides a single MCP endpoint for all deployed servers. AI clients connect to one URL; the gateway routes each tool call to the correct backend. Deploy a new server later and every connected IDE picks it up automatically — no reconfiguration needed.
-
-### Semantic search
-
-Natural language search across agents, tools, and MCP servers — for humans and for agents discovering capabilities at runtime. Powered by pgvector, the registry indexes artifact metadata as embeddings so you can search by description ("find me a server that queries Postgres") instead of exact names. This works in the Web UI, through the CLI, and through the REST API — meaning agents themselves can discover and select tools programmatically.
-
-### Governance and control
-
-agentregistry automatically enriches every artifact on ingest. Operators get:
-
-- **Audit visibility** — Full view of what's registered, what's deployed, and what's in use across your organization.
+Scaffold agents using ADK, version them, and push to the registry. Blueprints bundle an agent definition with its MCP server dependencies and skills into a single deployable unit. The registry stores the metadata and pointers — actual container images live in Docker Hub, GHCR, or any OCI registry you use. This means you own your artifacts; agentregistry indexes and governs them.
 
 <a id="quick-start"></a>
 ## Quick Start
