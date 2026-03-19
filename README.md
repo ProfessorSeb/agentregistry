@@ -1,5 +1,9 @@
 <p align="center">
-  <img src="img/agentregistry-logo.png" alt="agentregistry" width="500"/>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="img/agentregistry-logo.png">
+    <source media="(prefers-color-scheme: light)" srcset="img/agentgateway-logo-light.png">
+    <img src="img/agentregistry-logo.png" alt="agentregistry" width="500"/>
+  </picture>
 </p>
 
 <h1 align="center" style="font-size: 3em;">Build. Deploy. Discover.</h1>
@@ -104,9 +108,9 @@ That's it. Your IDE now has access to the deployed server through the agentgatew
 
 Create, scaffold, and publish the building blocks of your agentic infrastructure.
 
-- **MCP servers** — Register servers from npm (`npx`), PyPI (`uvx`), OCI/Docker images, or remote HTTP/SSE endpoints. Each entry stores version history, tool listings, environment variables, package references, and automated quality scores.
-- **Skills** — Build structured knowledge packages that extend what an agent knows. A skill is a `SKILL.md` bundled with code examples, docs, PDFs, and reference URLs. Scaffold with `arctl skill init`, publish with `arctl skill publish` to Docker Hub or any OCI registry.
-- **Agents** — Define agents that bundle an identity with dependencies: which MCP servers it needs, which skills it uses, and how it should be configured. Use ADK scaffolding to build, then package everything into a versioned blueprint for one-step deployment.
+- **MCP servers** — Register servers from npm (`npx`), PyPI (`uvx`), OCI/Docker images, or remote HTTP/SSE endpoints. Each entry supports versioning, environment variables, package references, and automated quality scores.
+- **Skills** — Build structured knowledge packages that extend what an agent knows. A skill is a `SKILL.md` bundled with code examples, docs, PDFs, and reference URLs. Scaffold with `arctl skill init`, publish with `arctl skill publish` to Docker Hub, any OCI registry, or a GitHub repository.
+- **Agents** — Define agents that bundle an identity with dependencies: which MCP servers it needs, which skills it uses, and how it should be configured. Scaffold with `arctl agent init`, then package everything into a versioned blueprint for one-step deployment.
 - **Prompts** — Create reusable instruction templates that define how an agent should behave in specific contexts. Version and store them alongside agents, skills, and servers so they're discoverable and shareable across your team.
 
 ### Web UI
@@ -131,7 +135,7 @@ Curate a shared catalog of MCP servers, agents, skills, and prompts your teams c
 Turn a broad set of available AI artifacts into a collection your organization is willing to support.
 
 - Organize what developers can discover and deploy
-- Review enrichment scores, version history, tool listings, and environment variable requirements
+- Review enrichment scores, versioning, and environment variable requirements
 - Standardize how artifacts are shared across teams
 - Keep control of what gets published and promoted
 
@@ -142,7 +146,7 @@ Move from discovery to usage without reinventing the same delivery path for ever
 - Run workflows locally with `arctl`
 - Deploy Agent Registry into Kubernetes with Helm
 - Support local environments and shared platform environments from the same registry
-- Build and push agents using ADK — blueprints bundle an agent with its MCP servers and skills into a single deployable unit
+- Build and push agents — blueprints bundle an agent with its MCP servers and skills into a single deployable unit
 
 ### Client and Gateway Integration
 
